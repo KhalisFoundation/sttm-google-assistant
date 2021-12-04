@@ -549,8 +549,13 @@ def webhook():
     }
   }
 
-  elif action == 'get_ang':
-    ang_no = int(query_result.get('parameters').get('AngNumber'))
+  elif action in ('get_ang','newpaath','ang_random'):
+    if action == 'newpaath':
+      ang_no = 1
+    elif action == 'ang_random':
+      ang_no = random.randint(1,1430)
+    else:
+      ang_no = int(query_result.get('parameters').get('AngNumber'))
     extra = ''
     not_okay = ang_no<1 or ang_no>1430
     if not_okay:
@@ -561,58 +566,6 @@ def webhook():
         }
       }
       ang_no = 1
-    json = {
-      "payload": {
-        "google": {
-          "expectUserResponse": True,
-          "richResponse": {
-            "items": [
-              {
-                "simpleResponse": {
-                  "textToSpeech": "Click Read Ang to begin.",
-                  "displayText": " "
-                }
-              },
-              {
-                "basicCard": {
-                  "title": "Guru Granth Sahib ji",
-                  "subtitle": f"Ang no. {ang_no}",
-                  "formattedText": "To mantain the sanctity of Gurbani,\n ***Cover your head before proceeding!***",
-                  "buttons": [
-                    {
-                      "title": "Read Ang",
-                      "openUrlAction": {
-                        "url": f"https://sttm.co/ang?ang={ang_no}"
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-              "suggestions": [
-                {
-                  "title": "Read another Ang"
-                },
-                {
-                  "title": "Get Random Shabad"
-                },
-                {
-                  "title": "Today's Hukamnama"
-                },
-                {
-                  "title": "Read Banis"
-                }
-              ]
-          }
-        }
-      }
-    }
-    if not_okay and extra!='':
-      json['payload']['google']['richResponse']['items'].insert(0,extra)
-  
-
-  elif action == 'sehajpaath.sehajpaath-angrandom':
-    ang_no = random.randint(1,1430)
     json = {
       "payload": {
         "google": {
@@ -659,7 +612,8 @@ def webhook():
         }
       }
     }
-
+    if not_okay and extra!='':
+      json['payload']['google']['richResponse']['items'].insert(0,extra)
 
   elif action == 'get_amrit_keertan':
     fdata = banidb.amritkeertan()[0:10]
