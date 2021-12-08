@@ -127,7 +127,7 @@ def webhook():
           }
         }
       }
-    json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
+    # json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
 
 
   elif action == "get_random":
@@ -231,7 +231,7 @@ def webhook():
           }
         }
       }
-    json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
+    # json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
   
   elif action == "get_shabad" or action == "go_back":
     if action == "get_shabad":
@@ -381,7 +381,7 @@ def webhook():
           }
         }
       }
-    json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
+    # json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
 
   elif action == "get_banis":
     fdata = banidb.banis()
