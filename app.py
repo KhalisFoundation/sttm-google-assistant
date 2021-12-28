@@ -41,7 +41,8 @@ def webhook():
             "items": [
               {
                 "simpleResponse": {
-                  "textToSpeech": "Here's the Hukamnama!"
+                  "textToSpeech": "Here's the Hukamnama!",
+                  "displayText": result
                 }
               },
               {
@@ -59,15 +60,33 @@ def webhook():
                     }
                   ]
                 }
+              },
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Wanna hear translations in?",
+                  "displayText": "Translate to?"
+                }
               }
             ],
             "suggestions": [
-                {
-                  "title": "Waheguru"
-                }
-              ],
+              {
+                "title": "Punjabi"
+              },
+              {
+                "title": "English"
+              },
+              {
+                "title": "Spanish"
+              },
+              {
+                "title": "Hindi"
+              },
+              {
+                "title": "Skip"
+              }
+            ],
             "linkOutSuggestion": {
-              "destinationName": "Read in Browser",
+              "destinationName": "in Browser",
               "url": "https://www.sikhitothemax.org/hukamnama"
             }
           }
@@ -102,7 +121,7 @@ def webhook():
                 {
                   "simpleResponse": {
                     "textToSpeech": " ",
-                    "displayText": "" # result
+                    "displayText": result
                   }
                 }
               ],
@@ -127,7 +146,7 @@ def webhook():
           }
         }
       }
-    # json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
+    json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
 
 
   elif action == "get_random":
@@ -139,51 +158,49 @@ def webhook():
     fdata = [ver['verse'] for ver in verses]
     result = '\n'.join(fdata)
     json = {
-      "payload": {
-        "google": {
-          "expectUserResponse": True,
-          "richResponse": {
-            "items": [
-              {
-                "simpleResponse": {
-                  "textToSpeech": "Click Read Shabad to begin.",
-                  "displayText": " "
+        "payload": {
+          "google": {
+            "expectUserResponse": True,
+            "richResponse": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>",
+                    "displayText":result
+                  }
+                },
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "Wanna hear translations in?",
+                    "displayText": "Translate to?"
+                  }
                 }
-              },
-              {
-                "basicCard": {
-                  "title": f"Random Shabad",
-                  "subtitle": f"{verses[0]['steek']['en']['bdb']}",
-                  "formattedText": "To mantain the sanctity of Gurbani,\n ***Cover your head before proceeding!***",
-                  "buttons": [
-                    {
-                      "title": "Read Shabad",
-                      "openUrlAction": {
-                        "url": f"https://sttm.co/shabad?id={shabadID}"
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
+              ],
               "suggestions": [
                 {
-                  "title": "Sehaj Paath"
+                  "title": "Punjabi"
                 },
                 {
-                  "title": "Get Random Shabad"
+                  "title": "English"
                 },
                 {
-                  "title": "Today's Hukamnama"
+                  "title": "Spanish"
                 },
                 {
-                  "title": "Read Banis"
+                  "title": "Hindi"
+                },
+                {
+                  "title": "Skip"
                 }
-              ]
+              ],
+              "linkOutSuggestion": {
+                "destinationName": "Open in Browser",
+                "url": f"https://www.sikhitothemax.org/shabad?id={shabadID}"
+              }
+            }
           }
         }
       }
-    }
   
   elif action == 'random.random-translation':
     lang = query_result.get('parameters').get('language').lower()
@@ -206,7 +223,7 @@ def webhook():
                 {
                   "simpleResponse": {
                     "textToSpeech": " ",
-                    "displayText": ""# result
+                    "displayText": result
                   }
                 }
               ],
@@ -231,7 +248,7 @@ def webhook():
           }
         }
       }
-    # json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
+    json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
   
   elif action == "get_shabad" or action == "go_back":
     if action == "get_shabad":
@@ -247,51 +264,49 @@ def webhook():
     fdata = [ver['verse'] for ver in verses]
     result = '\n'.join(fdata)
     json = {
-      "payload": {
-        "google": {
-          "expectUserResponse": True,
-          "richResponse": {
-            "items": [
-              {
-                "simpleResponse": {
-                  "textToSpeech": "Click Read Shabad to begin.",
-                  "displayText": " "
+        "payload": {
+          "google": {
+            "expectUserResponse": True,
+            "richResponse": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>",
+                    "displayText":result
+                  }
+                },
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "Wanna hear translations in?",
+                    "displayText": "Translate to?"
+                  }
                 }
-              },
-              {
-                "basicCard": {
-                  "title": f"Random Shabad",
-                  "subtitle": f"{verses[0]['steek']['en']['bdb']}",
-                  "formattedText": "To mantain the sanctity of Gurbani,\n ***Cover your head before proceeding!***",
-                  "buttons": [
-                    {
-                      "title": "Read Shabad",
-                      "openUrlAction": {
-                        "url": f"https://sttm.co/shabad?id={shabad_id}"
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
+              ],
               "suggestions": [
                 {
-                  "title": "Sehaj Paath"
+                  "title": "Punjabi"
                 },
                 {
-                  "title": "Get Random Shabad"
+                  "title": "English"
                 },
                 {
-                  "title": "Today's Hukamnama"
+                  "title": "Spanish"
                 },
                 {
-                  "title": "Read Banis"
+                  "title": "Hindi"
+                },
+                {
+                  "title": "Skip"
                 }
-              ]
+              ],
+              "linkOutSuggestion": {
+                "destinationName": "in Browser",
+                "url": f"https://sttm.co/shabad?id={shabad_id}"
+              }
+            }
           }
         }
       }
-    }
     if ok[2] == 'hukam':
       json = {
       "payload": {
@@ -301,7 +316,8 @@ def webhook():
             "items": [
               {
                 "simpleResponse": {
-                  "textToSpeech": "Here's the Hukamnama!"
+                  "textToSpeech": "Here's the Hukamnama!",
+                  "displayText": result
                 }
               },
               {
@@ -319,15 +335,33 @@ def webhook():
                     }
                   ]
                 }
+              },
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Wanna hear translations in?",
+                  "displayText": "Translate to?"
+                }
               }
             ],
             "suggestions": [
-                {
-                  "title": "Waheguru"
-                }
-              ],
+              {
+                "title": "Punjabi"
+              },
+              {
+                "title": "English"
+              },
+              {
+                "title": "Spanish"
+              },
+              {
+                "title": "Hindi"
+              },
+              {
+                "title": "Skip"
+              }
+            ],
             "linkOutSuggestion": {
-              "destinationName": "Read in Browser",
+              "destinationName": "in Browser",
               "url": "https://www.sikhitothemax.org/hukamnama"
             }
           }
@@ -356,7 +390,7 @@ def webhook():
                 {
                   "simpleResponse": {
                     "textToSpeech": " ",
-                    "displayText": "" #result
+                    "displayText": result
                   }
                 }
               ],
@@ -381,7 +415,7 @@ def webhook():
           }
         }
       }
-    # json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
+    json['payload']['google']['richResponse']['items'][0]['simpleResponse']['textToSpeech'] = result if not pu else f"<speak><voice name='pa-IN-Wavenet-A'><prosody rate='slow'>{bt.better(result)}</prosody></voice></speak>"
 
   elif action == "get_banis":
     fdata = banidb.banis()
@@ -434,7 +468,8 @@ def webhook():
     }
     for bani in blist.keys():
       res = {
-        "title": f"{bt.better_eng(blist[bani]['transliterations'].get('english')).title()}",
+        "title": f"{blist[bani]['gurmukhiUni']}",
+        "description": f"{bt.better_eng(blist[bani]['transliterations'].get('english')).title()}",
         "openUrlAction": {
           "url": f"{sgUrl}{bani}"
         }
@@ -468,9 +503,9 @@ def webhook():
               "carouselBrowse": {
                 "items": [
                   {
-                    "title": "", # f"{data[1]['rehat_name']}",
+                    "title": f"{data[1]['rehat_name']}",
                     "openUrlAction": {
-                      "url": "", # f"{rehatUrl}/pb"
+                      "url": f"{rehatUrl}/pb"
                     },
                     "description": "Alphabet: Gurmukhi",
                     "footer": "Click to read",
@@ -480,7 +515,7 @@ def webhook():
                       }
                   },
                   {
-                    "title": "", # f"{data[0]['rehat_name']}",
+                    "title": f"{data[0]['rehat_name']}",
                     "openUrlAction": {
                       "url": f"{rehatUrl}"
                     },
