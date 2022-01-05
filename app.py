@@ -49,7 +49,7 @@ def webhook():
                   "mediaType": "AUDIO",
                   "mediaObjects": [
                     {
-                      "contentUrl": "https://sttm-google-actino.gurmeharsingh.repl.co/hukam",
+                      "contentUrl": "https://sttm-google-assistant.herokuapp.com/hukam",
                       "description": f"Hukamnama for {d}/{m}/{y}",
                       "icon": {
                         "url": "https://khalisfoundation.org/wp-content/uploads/2016/11/sttmicon-1-1024x660.png",
