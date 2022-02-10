@@ -672,6 +672,7 @@ def webhook():
 
 @app.route('/hukam',methods=['GET'])
 def hukam():
+  hukam.hukam()
   return send_file("hukam.mp3",as_attachment=True)  
 
 if __name__ == '__main__':
