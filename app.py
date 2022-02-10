@@ -50,7 +50,7 @@ def webhook():
                   "mediaType": "AUDIO",
                   "mediaObjects": [
                     {
-                      "contentUrl": "https://sttm-google-assistant.herokuapp.com/hukam",
+                      "contentUrl": "https://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.mp3",
                       "description": f"Hukamnama for {d}/{m}/{y}",
                       "icon": {
                         "url": "https://khalisfoundation.org/wp-content/uploads/2016/11/sttmicon-1-1024x660.png",
@@ -325,7 +325,7 @@ def webhook():
                   "mediaType": "AUDIO",
                   "mediaObjects": [
                     {
-                      "contentUrl": "https://sttm-google-actino.gurmeharsingh.repl.co/hukam",
+                      "contentUrl": "https://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.mp3",
                       "description": f"Hukamnama for {d}/{m}/{y}",
                       "icon": {
                         "url": "https://khalisfoundation.org/wp-content/uploads/2016/11/sttmicon-1-1024x660.png",
@@ -669,11 +669,6 @@ def webhook():
       }
     }
   return json
-
-@app.route('/hukam',methods=['GET'])
-def hukam():
-  hukam.hukam()
-  return send_file("hukam.mp3",as_attachment=True)  
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080)
