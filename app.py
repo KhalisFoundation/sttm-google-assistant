@@ -130,7 +130,7 @@ def webhook():
                   "title": "Go Back"
                 },
                 {
-                  "title": "Explore Shabads"
+                  "title": "Random Shabad"
                 },
                 {
                   "title": "Read Banis"
@@ -232,7 +232,7 @@ def webhook():
                   "title": "Go Back"
                 },
                 {
-                  "title": "One more Shabad"
+                  "title": "Next Shabad"
                 },
                 {
                   "title": "Today's Hukamnama"
@@ -399,7 +399,7 @@ def webhook():
                   "title": "Go Back"
                 },
                 {
-                  "title": "One more Shabad"
+                  "title": "Next Shabad"
                 },
                 {
                   "title": "Today's Hukamnama"
@@ -532,7 +532,7 @@ def webhook():
           ],
               "suggestions": [
                 {
-                  "title": "Get Random Shabad"
+                  "title": "Random Shabad"
                 },
                 {
                   "title": "Today's Hukamnama"
@@ -599,7 +599,7 @@ def webhook():
                   "title": "Sehaj Paath"
                 },
                 {
-                  "title": "Get Random Shabad"
+                  "title": "Random Shabad"
                 },
                 {
                   "title": "Today's Hukamnama"
@@ -652,7 +652,7 @@ def webhook():
             ],
               "suggestions": [
                 {
-                  "title": "Get Random Shabad"
+                  "title": "Random Shabad"
                 },
                 {
                   "title": "Today's Hukamnama"
